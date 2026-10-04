@@ -1,0 +1,111 @@
+
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+
+### Listar todos los permisos
+GET {{baseUrl}}/permission
+
+### Crear permiso (con label)
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "label": "Crear usuario",
+  "actions": "create",
+  "subject": "user"
+}
+
+
+### Crear permiso (otro, para tener varios ids disponibles)
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "label": "Editar usuario",
+  "actions": "update",
+  "subject": "user"
+}
+
+
+### Leer permiso 
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "label": "Leer usuario",
+  "actions": "read",
+  "subject": "user"
+}
+
+
+
+### Eliminar permiso 
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "label": "Eliminar usuario",
+  "actions": "delete",
+  "subject": "user"
+}
+
+### Listar permiso 
+POST {{baseUrl}}/permission
+Content-Type: application/json
+
+{
+  "label": "listar usuario",
+  "actions": "readbyone",
+  "subject": "user"
+}
+
+
+
+
+### Crear permiso (sin label - es opcional)
+POST {{baseUrl}}/permissions
+Content-Type: {{contentType}}
+
+{
+  "actions": "delete",
+  "subject": "role"
+}
+
+### Crear permiso (debería fallar - actions/subject duplicados)
+POST {{baseUrl}}/permissions
+Content-Type: {{contentType}}
+
+{
+  "label": "Duplicado",
+  "actions": "create",
+  "subject": "user"
+}
+
+### Crear permiso (debería fallar - validación, falta actions)
+POST {{baseUrl}}/permissions
+Content-Type: {{contentType}}
+
+{
+  "label": "Permiso incompleto",
+  "subject": "user"
+}
+
+### Crear permiso (debería fallar - label excede maxLength)
+POST {{baseUrl}}/permissions
+Content-Type: {{contentType}}
+
+{
+  "label": "Este label es demasiado largo y supera los cincuenta caracteres permitidos",
+  "actions": "read",
+  "subject": "report"
+}
+
+
+
+### Obtener un permiso por id
+# Reemplaza el 1 por un id real que te haya devuelto el POST
+GET {{baseUrl}}/permissions/1
+
+### Obtener un permiso que no existe (debería dar 404)
+GET {{baseUrl}}/permissions/9999

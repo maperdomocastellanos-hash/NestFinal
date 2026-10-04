@@ -1,0 +1,66 @@
+@baseUrl = http://localhost:3000
+@ruta = categoria
+
+### 1. Listar todas (vacío al inicio)
+GET {{baseUrl}}/{{ruta}}
+
+### 2. Crear una categoría
+POST {{baseUrl}}/{{ruta}}
+Content-Type: application/json
+
+{
+  "nombre": "Electrónica",
+  "descripcion": "Productos electrónicos y accesorios"
+}
+
+### 3. Crear otra
+POST {{baseUrl}}/{{ruta}}
+Content-Type: application/json
+
+{
+  "nombre": "Alimentos"
+}
+
+### 4. Crear sin descripción (opcional en la entity)
+POST {{baseUrl}}/{{ruta}}
+Content-Type: application/json
+
+{
+  "nombre": "Ferretería"
+}
+
+### 5. Listar de nuevo (deberían salir 3)
+GET {{baseUrl}}/{{ruta}}
+
+### 6. Ver una por id (trae productos relacionados, debería venir [] vacío)
+GET {{baseUrl}}/{{ruta}}/1
+
+### 7. Ver una que no existe -> 404
+GET {{baseUrl}}/{{ruta}}/999
+
+### 8. Modificar
+PATCH {{baseUrl}}/{{ruta}}/1
+Content-Type: application/json
+
+{
+  "descripcion": "Descripción actualizada"
+}
+
+### 9. Modificar una que no existe -> 404
+PATCH {{baseUrl}}/{{ruta}}/999
+Content-Type: application/json
+
+{
+  "descripcion": "no debería aplicar"
+}
+
+### 10. Crear duplicada -> 400 BadRequest
+POST {{baseUrl}}/{{ruta}}
+Content-Type: application/json
+
+{
+  "nombre": "Electrónica"
+}
+
+### 11. Eliminar
+DELETE {{baseUrl}}/{{ruta}}/2

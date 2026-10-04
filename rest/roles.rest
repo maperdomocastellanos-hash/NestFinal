@@ -1,0 +1,71 @@
+@baseUrl = http://localhost:3000
+@contentType = application/json
+
+### Listar todos los roles
+GET {{baseUrl}}/roles
+
+### Crear rol (con permisos asociados)
+POST {{baseUrl}}/roles
+Content-Type: {{contentType}}
+
+{
+  "name": "Asistente",
+  "description": "Acceso total al sistema",
+  "permissionIds": [3]
+}
+
+### Crear rol (debería fallar - name duplicado)
+POST {{baseUrl}}/roles
+Content-Type: {{contentType}}
+
+{
+  "name": "admin",
+  "description": "Intento de duplicado"
+}
+
+### Crear rol (debería fallar - validación, name muy corto o vacío)
+POST {{baseUrl}}/roles
+Content-Type: {{contentType}}
+
+{
+  "description": "Rol sin nombre"
+}
+
+### Obtener un rol por id
+# Reemplaza el 1 por un id real que te haya devuelto el POST
+GET {{baseUrl}}/roles/1
+
+### Obtener un rol que no existe (debería dar 404)
+GET {{baseUrl}}/roles/9999
+
+### Actualizar rol (solo descripción)
+PATCH {{baseUrl}}/roles/1
+Content-Type: {{contentType}}
+
+{
+  "name": "administrador",
+  "description": "Acceso al sistema",
+  "permissionIds": [1, 2, 3,4]
+}
+
+### Actualizar rol (reemplazar permisos)
+PATCH {{baseUrl}}/roles/1
+Content-Type: {{contentType}}
+
+{
+  "permissionIds": [1, 3]
+}
+
+### Actualizar rol que no existe (debería dar 404)
+PATCH {{baseUrl}}/roles/9999
+Content-Type: {{contentType}}
+
+{
+  "description": "no debería funcionar"
+}
+
+### Eliminar rol
+DELETE {{baseUrl}}/roles/1
+
+### Eliminar rol que no existe (debería dar 404)
+DELETE {{baseUrl}}/roles/9999

@@ -1,0 +1,33 @@
+### listar 
+GET http://127.0.0.1:3000/users
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ZWIwNTkxOS1kZmVlLTQ0ZTktOWFmMy1lNjI3YzgyODU1MzQiLCJlbWFpbCI6ImNhcmxvc1BlcmRvbW9AbWFpbC5jb20iLCJpYXQiOjE3ODY0MjIwMTIsImV4cCI6MTc4NjQyMjA3Mn0._rxRpeyN-uXSHhn5K5TpoRKB0loQzLFqAhqk1GvWvlk
+
+
+### obtener uno por id
+GET http://127.0.0.1:3000/users/888f55a5-a3b9-47f5-b355-776fc7de4f31
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzYjVmNTAwYy00NTAwLTQ5M2QtYjgzZC0zZWVlNGI4NTM2ZDEiLCJlbWFpbCI6IkVueWVsQG1haWwuY29tIiwiaWF0IjoxNzg2MzAzMTEyLCJleHAiOjE3ODYzMDQ5MTJ9.FMl5IAvh9RXpY2rkGM3jIFIq4FCpxrO89zjRNhUs-lw
+
+### guardar
+POST http://127.0.0.1:3000/users
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3ZWIwNTkxOS1kZmVlLTQ0ZTktOWFmMy1lNjI3YzgyODU1MzQiLCJlbWFpbCI6ImNhcmxvc1BlcmRvbW9AbWFpbC5jb20iLCJpYXQiOjE3ODYzMDQyODYsImV4cCI6MTc4NjMwNjA4Nn0.gia_7PNHbeU0tItTafSrPIDfjycvvzaR1QY3Wdjbyg8
+    
+    {
+         "name":"Carlos Perdomo",
+         "email":"carlosPerdomo@mail.com",
+         "password":"carlosperdomo54321",
+         "roleId": [3]
+
+    }
+
+### actualizar (parcial)
+PATCH http://127.0.0.1:3000/users/888f55a5-a3b9-47f5-b355-776fc7de4f31
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiOTNjMTY4Ni1mNTAxLTQzYTEtYTNmZi0yNzIyZjIyYjNjMGUiLCJlbWFpbCI6IkZhYmlhbkBtYWlsLmNvbSIsImlhdCI6MTc4NDUwMTQxNiwiZXhwIjoxNzg0NTAzMjE2fQ.eSDWsyS2crhiXkc5pQ510GuOpzjfqmeewEYcyD8EntE
+
+    {
+         "email":"Fabiam5@mail.com"
+    }
+
+### eliminar
+DELETE http://127.0.0.1:3000/users/dabd9952-05d1-40cc-b4d3-af0ed6cb75ed

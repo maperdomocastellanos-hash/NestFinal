@@ -1,0 +1,14 @@
+####
+POST http://127.0.0.1:3000/v1/autenticacion/login
+Content-Type: application/json
+
+{
+"email": "carlosPerdomo@mail.com",
+"pwUsuario": "carlosperdomo54321"
+}
+
+
+
+####
+GET http://127.0.0.1:3000/v1/autenticacion/profile
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiOTNjMTY4Ni1mNTAxLTQzYTEtYTNmZi0yNzIyZjIyYjNjMGUiLCJlbWFpbCI6IkZhYmlhbkBtYWlsLmNvbSIsImlhdCI6MTc4NDUwMjMxNSwiZXhwIjoxNzg0NTA0MTE1fQ.tz6wbnvr4H-UukC8zTRgZ1Q1pTrpjBMP1tGcLvrGipo
